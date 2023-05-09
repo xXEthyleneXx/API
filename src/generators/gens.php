@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace xXEthyleneXx\API;
+namespace xXEthyleneXx;
 use Ramsey\Uuid\Uuid;
 
 trait Gens {
