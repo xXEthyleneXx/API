@@ -30,6 +30,6 @@
         "phpmailer/phpmailer": "6.8.*"
     },
     "autoload": {
-        "psr-4": { "xXEthyleneXx\\": "src/" }
+        "files": ["xxethylenexx/api/api.php"]
     }
 }
