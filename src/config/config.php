@@ -82,71 +82,42 @@ class Config {
         }
     }
     /**
-     * MariaDB Connection Information
-     * 
-     * @return array [
-     * 
-     *  "HOSTNAME"=>string,
-     * 
-     *  "PORT"=>int,
-     * 
-     *  "USERNAME"=>string,
-     * 
-     *  "PASSWORD"=>string,
-     * 
-     *  "DATABASE=>string"
-     * 
-     * ]
-     */
-    public function MariaDB() {
-        return MariaDB;
-        /**
-         * MariaDB HOSTNAME
-         * 
-         * @var string HOSTNAME
-         */
-        function HOSTNAME() {
-            return MariaDB["HOSTNAME"];
-        }
-        /**
-         * MariaDB PORT
-         * 
-         * @return string PORT
-         */
-        function PORT() {
-            return MariaDB["PORT"];
-        }
-        /**
-         * MariaDB USERNAME
-         * 
-         * @return string USERNAME
-         */
-        function USERNAME() {
-            return MariaDB["USERNAME"];
-        }
-        /**
-         * MariaDB PASSWORD
-         * 
-         * @return string PASSWORD
-         */
-        function PASSWORD() {
-            return MariaDB["PASSWORD"];
-        }
-        /**
-         * MariaDB DATABASE
-         * 
-         * @return string DATABASE
-         */
-        function DATABASE() {
-            return MariaDB["DATABASE"];
-        }
-    }
-    /**
      * Throws Exception to catch for Misconfigured Config
      * 
      * @throws Config_Exception
      */
     protected function error(string $message, int $code) {
         throw new Config_Exception($message, $code);
+    }
+}
+/**
+ * MariaDB Connection Information
+ * 
+ * MariaDB Information Gathered by Config
+ * 
+ * @return array [
+ * 
+ *  "HOSTNAME"=>string,
+ * 
+ *  "PORT"=>int,
+ * 
+ *  "USERNAME"=>string,
+ * 
+ *  "PASSWORD"=>string,
+ * 
+ *  "DATABASE=>string"
+ * 
+ * ]
+ */
+class MariaDB extends Config {
+    public function __construct() {
+        return MariaDB; 
+    }
+    public function __get($name) {
+        if (isset(MariaDB[$name])) {
+            return MariaDB[$name];
+        } else {
+            $this->error("MARIADB ['".$name."'] Not Defined", 7);
+        }
     }
 }

@@ -4,3 +4,4 @@
 [4] - MARIADB->USERNAME Not Defined In Config
 [5] - MARIADB->PASSWORD Not Defined In Config
 [6] - MARIADB->DATABASE Not Defined In Config
+[7] - MARIADB ['NAME'] Not Defined
