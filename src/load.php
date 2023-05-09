@@ -6,7 +6,7 @@ require "database/mariadb.php";
 // Database Redis
 require "database/redis.php";
 // Exceptions
-require "exception/exception.php";
+require "exceptions/exceptions.php";
 // Generators
 require "generators/gens.php";
 // Logging

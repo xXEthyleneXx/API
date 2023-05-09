@@ -6,7 +6,7 @@ require "load.php";
 use xXEthyleneXx\Config;
 use xXEthyleneXx\Database\MariaDB;
 use xXEthyleneXx\Database\Redis;
-use xXEthyleneXx\API_Exception;
+use xXEthyleneXx\Exceptions\API_Exception;
 use xXEthyleneXx\Logging;
 
 class API {
