@@ -2,16 +2,16 @@
 
 namespace xXEthyleneXx;
 
-use Exception;
-use mysqli;
+use xXEthyleneXx\API_Exception;
+use xXEthyleneXx\Config;
 use xXEthyleneXx\Logging;
-use xXEthyleneXx\Database\{MariaDB, Redis};
-use xXEthyleneXx\Gens;
+use xXEthyleneXx\Database\MariaDB;
+use xXEthyleneXx\Database\Redis;
 
 class API {
     use Gens;
-    public function __construct() {
-        $var = Gens::uuid();
+    public function __construct(array $config) {
+
     }
 }
 ?>
