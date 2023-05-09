@@ -1,0 +1,6 @@
+[1] - MARIADB Not Defined In Config
+[2] - MARIADB->HOSTNAME Not Defined In Config
+[3] - MARIADB->PORT Not Defined In Config
+[4] - MARIADB->USERNAME Not Defined In Config
+[5] - MARIADB->PASSWORD Not Defined In Config
+[6] - MARIADB->DATABASE Not Defined In Config

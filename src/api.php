@@ -3,11 +3,11 @@ declare(strict_types=1);
 namespace xXEthyleneXx;
 require "load.php";
 
-use xXEthyleneXx\API_Exception;
 use xXEthyleneXx\Config;
-use xXEthyleneXx\Logging;
 use xXEthyleneXx\Database\MariaDB;
 use xXEthyleneXx\Database\Redis;
+use xXEthyleneXx\API_Exception;
+use xXEthyleneXx\Logging;
 
 class API {
     use Gens;
