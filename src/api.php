@@ -1,6 +1,7 @@
-<?php declare(strict_types=1);
-
+<?php 
+declare(strict_types=1);
 namespace xXEthyleneXx;
+require "load.php";
 
 use xXEthyleneXx\API_Exception;
 use xXEthyleneXx\Config;
