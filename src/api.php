@@ -3,19 +3,24 @@ declare(strict_types=1);
 namespace xXEthyleneXx;
 require "load.php";
 
-use xXEthyleneXx\Config;
-use xXEthyleneXx\Database\MariaDB;
-use xXEthyleneXx\Database\Redis;
+use xXEthyleneXx\Config\MariaDBC;
+use xXEthyleneXx\Database\MariaDBD;
+use xXEthyleneXx\Database\RedisD;
 use xXEthyleneXx\Exceptions\API_Exception;
 use xXEthyleneXx\Logging;
 
 class API {
     use Gens;
     // Public
-    public Config $config;
+    public MariaDBC $MariaDB;
 
-    public function __construct(array $config = null) {
-        $this->config = new Config("config.json");
+    /**
+     * Construct API
+     * 
+     * @param string $file_path = "/path/to/config.json"
+     */
+    public function __construct(string $file_path) {
+        $this->MariaDB = new MariaDBC($file_path);
     }
 }
 ?>

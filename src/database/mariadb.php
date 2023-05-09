@@ -3,6 +3,6 @@
 namespace xXEthyleneXx\Database;
 use mysqli;
 
-class MariaDB {
+class MariaDBD {
 
 }

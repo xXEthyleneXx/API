@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace xXEthyleneXx;
+namespace xXEthyleneXx\Config;
 
 use xXEthyleneXx\Exceptions\Config_Exception;
 
@@ -109,15 +109,19 @@ class Config {
  * 
  * ]
  */
-class MariaDB extends Config {
-    public function __construct() {
-        return MariaDB; 
+class MariaDBC extends Config {
+    public function __construct(string $file_path) {
+        Config::__construct($file_path);
     }
     public function __get($name) {
-        if (isset(MariaDB[$name])) {
-            return MariaDB[$name];
+        if ($name == "ALL") {
+            return MariaDB; 
         } else {
-            $this->error("MARIADB ['".$name."'] Not Defined", 7);
+            if (isset(MariaDB[$name])) {
+                return MariaDB[$name];
+            } else {
+                $this->error("MARIADB ['".$name."'] Not Defined", 7);
+            }
         }
     }
 }

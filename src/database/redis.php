@@ -3,6 +3,6 @@
 namespace xXEthyleneXx\Database;
 use Predis\Client;
 
-class Redis {
+class RedisD {
 
 }
