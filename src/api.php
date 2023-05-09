@@ -11,8 +11,11 @@ use xXEthyleneXx\Logging;
 
 class API {
     use Gens;
-    public function __construct(array $config = null) {
+    // Public
+    protected Config $config;
 
+    public function __construct(array $config = null) {
+        $this->config = new Config("config.json");
     }
 }
 ?>
