@@ -12,7 +12,7 @@ use xXEthyleneXx\Logging;
 class API {
     use Gens;
     // Public
-    protected Config $config;
+    public Config $config;
 
     public function __construct(array $config = null) {
         $this->config = new Config("config.json");

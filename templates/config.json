@@ -3,19 +3,17 @@
         "NAME":null,
         "VERSION":null
     },
-    "DATABASE":{
-        "MARIADB":{
-            "HOSTNAME":"127.0.0.1",
-            "PORT":3306,
-            "USERNAME":null,
-            "PASSWORD":null,
-            "DATABASE":null
-        },
-        "REDIS":{
-            "ENABLED":false,
-            "HOSTNAME":"127.0.0.1",
-            "PORT":6379
-        }
+    "MARIADB":{
+        "HOSTNAME":"127.0.0.1",
+        "PORT":3306,
+        "USERNAME":null,
+        "PASSWORD":null,
+        "DATABASE":null
+    },
+    "REDIS":{
+        "ENABLED":false,
+        "HOSTNAME":"127.0.0.1",
+        "PORT":6379
     },
     "LOGGING":{
         "ENABLED":false,
