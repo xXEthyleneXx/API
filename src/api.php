@@ -10,7 +10,7 @@ use xXEthyleneXx\Database\Redis;
 
 class API {
     use Gens;
-    public function __construct(array $config) {
+    public function __construct(array $config = null) {
 
     }
 }
