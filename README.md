@@ -1,2 +1,2 @@
 # API
-Osbeorn Proprietary  API Libraray
+Osbeorn Proprietary API Libraray
