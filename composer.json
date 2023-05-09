@@ -30,6 +30,6 @@
         "phpmailer/phpmailer": "6.8.*"
     },
     "autoload": {
-        "files": ["xxethylenexx/api/api.php"]
+        "files": ["api.php"]
     }
 }
