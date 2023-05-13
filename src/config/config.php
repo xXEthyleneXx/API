@@ -136,10 +136,7 @@ class Config {
  * 
  * ]
  */
-class MariaDBC extends Config {
-    public function __construct(string $file_path) {
-        Config::__construct($file_path);
-    }
+trait MariaDBC {
     public function __get($name) {
         if ($name == "ALL") {
             return MariaDB; 
@@ -165,10 +162,7 @@ class MariaDBC extends Config {
  * 
  * ]
  */
-class RedisDBC extends Config {
-    public function __construct(string $file_path) {
-        Config::__construct($file_path);
-    }
+trait RedisDBC {
     public function __get($name) {
         if ($name == "ALL") {
             return RedisDB; 
