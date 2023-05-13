@@ -25,6 +25,8 @@ class API {
      */
     public function __construct(string $file_path) {
         $this->config = new Config($file_path);
+        $this->MariaDBC = new MariaDBC();
+        $this->RedisDBC = new RedisDBC();
         echo($this->MariaDBC->ALL);
     }
 }
