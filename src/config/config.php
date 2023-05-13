@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace xXEthyleneXx\Config;
+namespace xXEthyleneXx;
 
 use xXEthyleneXx\Exceptions\Config_Exception;
 
@@ -29,6 +29,7 @@ class Config {
      * 
      * ]
      */
+    public array $Info;
     public array $MariaDB;
     public array $RedisDB;
     // Protected
@@ -38,12 +39,7 @@ class Config {
     public function __construct(string $file_path) {
         $this->config = json_decode(file_get_contents($file_path), true);
         $this->checkMariaDB();
-        define("MariaDB", $this->MariaDB);
         $this->checkRedisDB();
-        define("RedisDB", $this->RedisDB);
-    }
-    public function __get($name) {
-        var_dump($name);
     }
     /**
      * MariaDB Config Check System

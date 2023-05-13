@@ -3,9 +3,7 @@ declare(strict_types=1);
 namespace xXEthyleneXx;
 require "load.php";
 
-use xXEthyleneXx\Config\Config;
-use xXEthyleneXx\Config\MariaDBC;
-use xXEthyleneXx\Config\RedisDBC;
+use xXEthyleneXx\Config;
 use xXEthyleneXx\Database\MariaDBD;
 use xXEthyleneXx\Database\RedisD;
 use xXEthyleneXx\Exceptions\API_Exception;
@@ -23,7 +21,7 @@ class API {
      */
     public function __construct(string $file_path) {
         $this->config = new Config($file_path);
-        $this->config->MariaDBC->HOSTNAME;
+        var_dump($this->config->MariaDB);
     }
 }
 ?>
