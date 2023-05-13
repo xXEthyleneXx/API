@@ -29,19 +29,16 @@ class Config {
      * 
      * ]
      */
-    protected array $InfoC;
-    protected array $MariaDBC;
-    protected array $RedisDBC;
+    public array $Info;
+    public array $MariaDB;
+    public array $RedisDB;
     // Protected
     protected array $config;
-    // Definitions
     // Construct
     public function __construct(string $file_path) {
         $this->config = json_decode(file_get_contents($file_path), true);
         $this->checkMariaDB();
-        define("MariaDBC", $this->MariaDBC);
         $this->checkRedisDB();
-        define("RedisDBC", $this->RedisDBC);
     }
     /**
      * MariaDB Config Check System
@@ -80,7 +77,7 @@ class Config {
             } else {
                 $this->error("MARIADB->DATABASE Not Defined In Config", 6);
             }
-            $this->MariaDBC = $MariaDB;
+            $this->MariaDB = $MariaDB;
         } else {
             $this->error("MARIADB Not Defined In Config", 1);
         }
@@ -104,7 +101,7 @@ class Config {
             } else {
                 $this->error("REDISDB->PORT Not Defined In Config", 3);
             }
-            $this->RedisDBC = $RedisDB;
+            $this->RedisDB = $RedisDB;
         } else {
             $this->error("REDISDB Not Defined In Config", 1);
         }
@@ -117,9 +114,31 @@ class Config {
     protected function error(string $message, int $code) {
         throw new Config_Exception($message, $code);
     }
-    public function MariaDB() {
-        function __get($name) {
-            return MariaDBC[$name];
+}
+class MariaDB extends Config {
+    protected $flag = false;
+    protected Config $MariaDBC;
+    public function __construct(Config $config = null, string $file_path = null, ) {
+        if (is_object($config)) {
+            $this->flag = true;
+        } else {
+            Config::__construct($file_path);
+            $this->flag = false;
+        }
+    }
+    public function __get($name) {
+        if ($this->flag == false) {
+            if ($name == "ALL") {
+                return $this->MariaDB[$name];
+            } else {
+                return $this->MariaDB;
+            }
+        } else {
+            if ($name == "ALL") {
+                return $this->MariaDBC->MariaDB;
+            } else {
+                return $this->MariaDBC->MariaDB[$name];
+            }
         }
     }
 }
