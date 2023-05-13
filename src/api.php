@@ -13,7 +13,7 @@ class API {
     // Generators
     use Gens;
     // Configs
-    protected Config $config;
+    public Config $config;
     /**
      * Construct API
      * 
