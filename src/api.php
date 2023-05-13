@@ -16,9 +16,7 @@ class API {
     use Gens;
     // Configs
     protected Config $config;
-    use MariaDBC;
     public MariaDBC $MariaDBC;
-    use RedisDBC;
     public RedisDBC $RedisDBC;
     /**
      * Construct API
