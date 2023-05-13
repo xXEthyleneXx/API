@@ -21,7 +21,6 @@ class API {
      */
     public function __construct(string $file_path) {
         $this->config = new Config($file_path);
-        var_dump($this->config->MariaDB);
     }
 }
 ?>

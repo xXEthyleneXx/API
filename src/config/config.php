@@ -29,9 +29,9 @@ class Config {
      * 
      * ]
      */
-    public array $Info;
-    public array $MariaDB;
-    public array $RedisDB;
+    protected array $InfoC;
+    protected array $MariaDBC;
+    protected array $RedisDBC;
     // Protected
     protected array $config;
     // Definitions
@@ -39,7 +39,9 @@ class Config {
     public function __construct(string $file_path) {
         $this->config = json_decode(file_get_contents($file_path), true);
         $this->checkMariaDB();
+        define("MariaDBC", $this->MariaDBC);
         $this->checkRedisDB();
+        define("RedisDBC", $this->RedisDBC);
     }
     /**
      * MariaDB Config Check System
@@ -78,7 +80,7 @@ class Config {
             } else {
                 $this->error("MARIADB->DATABASE Not Defined In Config", 6);
             }
-            $this->MariaDB = $MariaDB;
+            $this->MariaDBC = $MariaDB;
         } else {
             $this->error("MARIADB Not Defined In Config", 1);
         }
@@ -102,7 +104,7 @@ class Config {
             } else {
                 $this->error("REDISDB->PORT Not Defined In Config", 3);
             }
-            $this->RedisDB = $RedisDB;
+            $this->RedisDBC = $RedisDB;
         } else {
             $this->error("REDISDB Not Defined In Config", 1);
         }
@@ -114,5 +116,10 @@ class Config {
      */
     protected function error(string $message, int $code) {
         throw new Config_Exception($message, $code);
+    }
+    public function MariaDB() {
+        function __get($name) {
+            return MariaDBC[$name];
+        }
     }
 }
