@@ -30,6 +30,7 @@ class Config {
      * ]
      */
     public array $MariaDB;
+    public array $RedisDB;
     // Protected
     protected array $config;
     // Definitions
@@ -38,6 +39,8 @@ class Config {
         $this->config = json_decode(file_get_contents($file_path), true);
         $this->checkMariaDB();
         define("MariaDB", $this->MariaDB);
+        $this->checkRedisDB();
+        define("RedisDB", $this->RedisDB);
     }
     /**
      * MariaDB Config Check System
@@ -82,6 +85,30 @@ class Config {
         }
     }
     /**
+     * RedisDB Config Check System
+    */
+    protected function checkRedisDB() {
+        // MariaDB Config Check
+        $RedisDB = [];
+        if (isset($this->config["REDISDB"])) {
+            // Hostname Check
+            if (isset($this->config["REDISDB"]["HOSTNAME"])) {
+                $RedisDB["HOSTNAME"] = $this->config["REDISDB"]["HOSTNAME"];
+            } else {
+                $this->error("REDISDB->HOSTNAME Not Defined In Config", 2);
+            }
+            // Port Check
+            if (isset($this->config["REDISDB"]["PORT"])) {
+                $RedisDB["PORT"] = $this->config["REDISDB"]["PORT"];
+            } else {
+                $this->error("REDISDB->PORT Not Defined In Config", 3);
+            }
+            $this->RedisDB = $RedisDB;
+        } else {
+            $this->error("REDISDB Not Defined In Config", 1);
+        }
+    }
+    /**
      * Throws Exception to catch for Misconfigured Config
      * 
      * @throws Config_Exception
@@ -121,6 +148,35 @@ class MariaDBC extends Config {
                 return MariaDB[$name];
             } else {
                 $this->error("MARIADB ['".$name."'] Not Defined", 7);
+            }
+        }
+    }
+}
+/**
+ * RedisDB Connection Information
+ * 
+ * RedisDB Information Gathered by Config
+ * 
+ * @return array [
+ * 
+ *  "HOSTNAME"=>string,
+ * 
+ *  "PORT"=>int,
+ * 
+ * ]
+ */
+class RedisDBC extends Config {
+    public function __construct(string $file_path) {
+        Config::__construct($file_path);
+    }
+    public function __get($name) {
+        if ($name == "ALL") {
+            return RedisDB; 
+        } else {
+            if (isset(RedisDB[$name])) {
+                return RedisDB[$name];
+            } else {
+                $this->error("REDISDB ['".$name."'] Not Defined", 7);
             }
         }
     }
