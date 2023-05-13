@@ -16,8 +16,6 @@ class API {
     use Gens;
     // Configs
     protected Config $config;
-    public MariaDBC $MariaDBC;
-    public RedisDBC $RedisDBC;
     /**
      * Construct API
      * 
@@ -25,9 +23,7 @@ class API {
      */
     public function __construct(string $file_path) {
         $this->config = new Config($file_path);
-        $this->MariaDBC = new MariaDBC();
-        $this->RedisDBC = new RedisDBC();
-        echo($this->MariaDBC->ALL);
+        $this->config->MariaDBC->HOSTNAME;
     }
 }
 ?>

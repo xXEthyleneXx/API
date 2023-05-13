@@ -42,6 +42,9 @@ class Config {
         $this->checkRedisDB();
         define("RedisDB", $this->RedisDB);
     }
+    public function __get($name) {
+        var_dump($name);
+    }
     /**
      * MariaDB Config Check System
     */
@@ -115,63 +118,5 @@ class Config {
      */
     protected function error(string $message, int $code) {
         throw new Config_Exception($message, $code);
-    }
-}
-/**
- * MariaDB Connection Information
- * 
- * MariaDB Information Gathered by Config
- * 
- * @return array [
- * 
- *  "HOSTNAME"=>string,
- * 
- *  "PORT"=>int,
- * 
- *  "USERNAME"=>string,
- * 
- *  "PASSWORD"=>string,
- * 
- *  "DATABASE=>string"
- * 
- * ]
- */
-trait MariaDBC {
-    public function __get($name) {
-        if ($name == "ALL") {
-            return MariaDB; 
-        } else {
-            if (isset(MariaDB[$name])) {
-                return MariaDB[$name];
-            } else {
-                $this->error("MARIADB ['".$name."'] Not Defined", 7);
-            }
-        }
-    }
-}
-/**
- * RedisDB Connection Information
- * 
- * RedisDB Information Gathered by Config
- * 
- * @return array [
- * 
- *  "HOSTNAME"=>string,
- * 
- *  "PORT"=>int,
- * 
- * ]
- */
-trait RedisDBC {
-    public function __get($name) {
-        if ($name == "ALL") {
-            return RedisDB; 
-        } else {
-            if (isset(RedisDB[$name])) {
-                return RedisDB[$name];
-            } else {
-                $this->error("REDISDB ['".$name."'] Not Defined", 7);
-            }
-        }
     }
 }
