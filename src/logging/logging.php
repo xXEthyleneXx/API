@@ -2,7 +2,9 @@
 
 namespace xXEthyleneXx;
 
-use Monolog;
+use Monolog\Level;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 class Logging {
     public function __construct() {

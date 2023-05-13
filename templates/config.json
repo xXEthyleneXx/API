@@ -16,11 +16,8 @@
         "PORT":6379
     },
     "LOGGING":{
-        "ENABLED":false,
         "DATABASE":null,
-        "EXCEPTION":null,
         "GENERATORS":null,
-        "LOGGING":null,
-        "ACCESS":null
+        "API":null
     }
 }

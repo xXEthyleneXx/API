@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace xXEthyleneXx;
+namespace xXEthyleneXx\Config;
 
 use xXEthyleneXx\Exceptions\Config_Exception;
 
@@ -115,10 +115,10 @@ class Config {
         throw new Config_Exception($message, $code);
     }
 }
-class MariaDB extends Config {
+class MariaDBC extends Config {
     protected $flag = false;
     protected Config $MariaDBC;
-    public function __construct(Config $config = null, string $file_path = null, ) {
+    public function __construct(Config $config = null, string $file_path = null) {
         if (is_object($config)) {
             $this->flag = true;
         } else {
@@ -138,6 +138,33 @@ class MariaDB extends Config {
                 return $this->MariaDBC->MariaDB;
             } else {
                 return $this->MariaDBC->MariaDB[$name];
+            }
+        }
+    }
+}
+class RedisDBC extends Config {
+    protected $flag = false;
+    protected Config $RedisDBC;
+    public function __construct(Config $config = null, string $file_path = null) {
+        if (is_object($config)) {
+            $this->flag = true;
+        } else {
+            Config::__construct($file_path);
+            $this->flag = false;
+        }
+    }
+    public function __get($name) {
+        if ($this->flag == false) {
+            if ($name == "ALL") {
+                return $this->RedisDB[$name];
+            } else {
+                return $this->RedisDB;
+            }
+        } else {
+            if ($name == "ALL") {
+                return $this->RedisDBC->RedisDB;
+            } else {
+                return $this->RedisDBC->RedisDB[$name];
             }
         }
     }
